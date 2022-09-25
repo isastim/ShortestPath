@@ -21,7 +21,7 @@ class AppConfig:
         self.__init_controller()
         
     def __parse_args(self) -> None:
-        self.argument_parser.add_argument("--config-file")
+        self.argument_parser.add_argument("--config-file", help="Config file to set parameters of the app", required=True)
         self.args: Namespace = self.argument_parser.parse_args()
         self.json_parser = JSONParser(self.args.config_file)
         
