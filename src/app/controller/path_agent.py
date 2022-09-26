@@ -23,10 +23,12 @@ class PathAgent:
             for position in adjacent_positions 
             if self.__should_check_position(position, current_path)
         ]
-        self.shortest_path = self.__get_smallest_list(paths)
+        self.shortest_path = self.__get_smallest_list(paths) or self.shortest_path
         return self.shortest_path
         
     def __get_smallest_list(self, lists: List[List]) -> List:
+        if len(lists) is 0:
+            return None
         smallest_list = lists[0]
         for list_entry in lists:
             smallest_list = list_entry if list_entry.__len__() < smallest_list.__len__() else smallest_list
